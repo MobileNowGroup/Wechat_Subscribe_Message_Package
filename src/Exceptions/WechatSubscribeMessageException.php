@@ -1,6 +1,6 @@
 <?php
 
-namespace Ywmelo\Exceptions;
+namespace MobileNowGroup\SubscribeMessage\Exceptions;
 
 use Exception;
 use Symfony\Component\HttpFoundation\Response;

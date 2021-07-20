@@ -1,9 +1,9 @@
 <?php
 
-namespace Ywmelo\Messages;
+namespace MobileNowGroup\SubscribeMessage\Messages;
 
 use EasyWeChat;
-use Ywmelo\Exceptions\WechatSubscribeMessageException;
+use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
 
 class WechatSubscribeMessage
 {
