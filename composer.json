@@ -14,6 +14,13 @@
             "email": "747786659@qq.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MobileNowGroup\\SubscribeMessage\\WechatSubscribeMessageServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
