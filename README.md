@@ -50,3 +50,23 @@ class WechatSubScribeMessageNotification extends Notification
 $user->notify(new WechatSubscribeMessageNotification($formId));
 
 ```
+### 发布事件监听
+```
+php artisan vendor:publish --provider="MobileNowGroup\SubscribeMessage\WechatSubscribeMessageServiceProvider" 
+```
+
+### Events
+    添加如下代码到 App\Providers\EventServiceProvider
+```php
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+  
+        'MobileNowGroup\SubscribeMessage\WechatSubscribeMessageSent' => [
+            'App\Listeners\WechatSubscribeMessageListener',
+        ],
+    ];
+```
