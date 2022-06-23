@@ -1,6 +1,6 @@
 <?php
 
-namespace MobileNowGroup\SubscribeMessage;
+namespace MobileNowGroup\SubscribeMessage\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
