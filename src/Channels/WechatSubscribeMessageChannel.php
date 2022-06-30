@@ -5,7 +5,7 @@ namespace MobileNowGroup\SubscribeMessage\Channels;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notification;
 use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
-use MobileNowGroup\SubscribeMessage\WechatSubscribeMessageSent;
+use MobileNowGroup\SubscribeMessage\Events\WechatSubscribeMessageSent;
 
 class WechatSubscribeMessageChannel
 {
