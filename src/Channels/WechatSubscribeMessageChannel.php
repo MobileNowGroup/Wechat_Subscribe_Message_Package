@@ -5,6 +5,7 @@ namespace MobileNowGroup\SubscribeMessage\Channels;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notification;
 use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
+use MobileNowGroup\SubscribeMessage\Events\WechatSubscribeMessageSent;
 
 class WechatSubscribeMessageChannel
 {
@@ -25,6 +26,7 @@ class WechatSubscribeMessageChannel
             ->to($to);
 
         $result = \EasyWeChat::miniProgram()->subscribe_message->send($message->toArray());
+        event(new WechatSubscribeMessageSent($result));
 
         if ($result['errcode'] != 0) {
             throw new WechatSubscribeMessageException($result['errmsg'], $result['errcode']);
