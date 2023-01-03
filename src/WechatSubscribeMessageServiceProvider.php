@@ -25,7 +25,7 @@ class WechatSubscribeMessageServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../listeners/' => app_path('Listeners')
+                __DIR__ . '/../listeners/WechatSubscribeMessageListener.php.step' => app_path('Listeners/WechatSubscribeMessageListener.php')
             ], 'listener');
         }
     }
