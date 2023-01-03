@@ -2,9 +2,8 @@
 
 namespace App\Listeners;
 
-
 use Illuminate\Support\Facades\Log;
-use MobileNowGroup\SubscribeMessage\WechatSubscribeMessageSent;
+use MobileNowGroup\SubscribeMessage\Events\WechatSubscribeMessageSent;
 
 class WechatSubscribeMessageListener
 {
@@ -21,7 +20,7 @@ class WechatSubscribeMessageListener
     /**
      * Handle the event.
      *
-     * @param \MobileNowGroup\SubscribeMessage\WechatSubscribeMessageSent $event
+     * @param \MobileNowGroup\SubscribeMessage\Events\WechatSubscribeMessageSent $event
      * @return void
      */
     public function handle(WechatSubscribeMessageSent $event)
