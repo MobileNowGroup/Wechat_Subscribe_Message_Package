@@ -4,8 +4,17 @@
 
 ## 安装
 
+如果你的 ``` overtrue/laravel_wechat ``` package 为 ^7.0 及以上版本，请执行下面命令
+
 ```shell
-composer require mobilenowgroup/subscribe-message
+composer require mobilenowgroup/subscribe-message:"^2.0"
+```
+
+如果你的 ``` overtrue/laravel_wechat ``` package 为 ^6.0 及以下版本，请执行下面命令
+
+
+```shell
+composer require mobilenowgroup/subscribe-message:"^1.3"
 ```
 
 ## 使用

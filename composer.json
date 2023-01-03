@@ -4,9 +4,8 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": ">=7.0.0",
-        "w7corp/easywechat": ">=4.0.0",
-        "laravel/framework": ">=5.8.1"
+        "overtrue/wechat": ">=4.0.0",
+        "laravel/framework": "*"
     },
     "authors": [
         {
