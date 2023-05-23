@@ -3,6 +3,7 @@
 namespace MobileNowGroup\SubscribeMessage;
 
 use Illuminate\Support\ServiceProvider;
+use MobileNowGroup\SubscribeMessage\Views\Engines\JsonTemplatesEngine;
 
 class WechatSubscribeMessageServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,9 @@ class WechatSubscribeMessageServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app['view']->addExtension('json', 'json-templates', function () {
+            return new JsonTemplatesEngine();
+        });
     }
 
     /**
