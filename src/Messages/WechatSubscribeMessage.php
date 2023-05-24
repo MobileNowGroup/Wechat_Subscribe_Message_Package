@@ -111,6 +111,19 @@ class WechatSubscribeMessage
     }
 
     /**
+     * @param $path
+     * @param $data
+     * @return $this
+     */
+    public function view($view, $data)
+    {
+        $content = view($view, $data)->render();
+
+        $this->data = json_decode($content, true);
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
