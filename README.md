@@ -79,3 +79,102 @@ php artisan vendor:publish --provider="MobileNowGroup\SubscribeMessage\WechatSub
         ],
     ];
 ```
+
+### 使用View
+写在前面：这是一个可选择的优化方案。旨在通过使用view，减少业务逻辑中无语义化的字段。
+####使用示例：
+第一步： 在 resources/views目录下创建一个视图JSON文件，例如：
+        resources/views/subscription-message/orderSucessfullyReminder.json
+
+```json
+{
+  "character_string1": {
+    "value": "{{ name }}"
+  },
+  "date2": {
+    "value": "{{ date }}"
+  },
+  "amount3": {
+    "value": "{{ amount }}"
+  }
+}
+```
+ 第二步：检查你的Notifications下发送订阅消息的类并确定是否更新：
+修改原来的SendSubscriptionMessage.php的构造方法和toWechatSubscribeMessage()方法，修改之后是这样的：
+
+```php
+/**
+     * Create a new notification instance.
+     * SendSubscriptionMessage constructor.
+     * @param string $templateId
+     * @param string $path
+     * @param array $data
+     * @param string|null $view
+     */
+    public function __construct(string $templateId, string $path, array $data, ?string $view = null)
+    {
+        $this->templateId = $templateId;
+        $this->path = $path;
+        $this->data = $data;
+        $this->view = $view;
+    }
+```
+
+```php
+/**
+     * @param $notifiable
+     * @return WechatSubscribeMessage
+     */
+    public function toWechatSubscribeMessage($notifiable): WechatSubscribeMessage
+    {
+        $templateId = $this->templateId;
+        $path = $this->path;
+        $data = $this->data;
+
+        $wechatSubscribeMesssage = (new WechatSubscribeMessage)
+            ->setTemplateId($templateId)
+            ->setPage($path)
+            ->setState(config('glenmorangie.mini-program.state'));
+
+        if (empty($this->view)) {
+            $wechatSubscribeMesssage->setData($data);
+        } else {
+            $wechatSubscribeMesssage->view($this->view, $data);
+        }
+
+        return $wechatSubscribeMesssage;
+    }
+```
+
+第三步：实例化SendSubscriptionMessage的时候，在构造方法中最后一个参数里传入JSON视图文件的"路径"就可以了。 使用view前后的传参变化，
+原来：
+```php
+$user->notify(new SendSubscriptionMessage(
+                'tempate_id',
+                '/pages/home/index',
+                [
+                    'thing1' => [
+                        'value' => $name
+                    ],
+                    'time2' => [
+                        'value' => date('Y-m-d H:i:s'),
+                    ],
+                    'thing3' => [
+                        'value' => $amount,
+                    ]
+                ]
+            ));
+```
+使用view后：
+```php
+$user->notify(new SendSubscriptionMessage(
+                'tempate_id',
+                '/pages/home/index',
+                [
+                    'name' => $name,
+                    'date' => date('Y-m-d H:i:s'),
+                    'amount' => $amount
+                ]
+            , 'subscription-message/orderSucessfullyReminder'));
+
+```
