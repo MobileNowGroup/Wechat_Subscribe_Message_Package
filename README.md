@@ -82,7 +82,7 @@ php artisan vendor:publish --provider="MobileNowGroup\SubscribeMessage\WechatSub
 
 ### 使用View
 写在前面：这是一个可选择的优化方案。旨在通过使用view，减少业务逻辑中无语义化的字段。
-####使用示例：
+#### 使用示例：
 第一步： 在 resources/views目录下创建一个视图JSON文件，例如：
         resources/views/subscription-message/orderSucessfullyReminder.json
 
