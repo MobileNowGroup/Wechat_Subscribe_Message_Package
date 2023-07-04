@@ -4,8 +4,8 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "overtrue/wechat": ">=4.0.0",
-        "laravel/framework": "*"
+        "laravel/framework": "*",
+        "w7corp/easywechat": "1.* | 2.* | 3.* | 4.* | 5.*"
     },
     "authors": [
         {
@@ -20,10 +20,14 @@
             ]
         }
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "MobileNowGroup\\SubscribeMessage\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "easywechat-composer/easywechat-composer": false
         }
     }
 }
