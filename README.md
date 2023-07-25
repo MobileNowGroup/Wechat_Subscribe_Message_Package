@@ -57,16 +57,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
+use MobileNowGroup\SubscribeMessage\Traits\InteractsMiniProgramUserOpenId;
 
 class User extends Authenticatable implements ReceiveWechatNotificationInterface
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsMiniProgramUserOpenId;
     
     
-    public function routeNotificationForOpenid(): string;
-    {
-        return $this->open_id;
-    }
 }
 
 ```
