@@ -56,7 +56,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;use MobileNowGroup\SubscribeMessage\Traits\InteractsMiniProgramUserOpenId;
+use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
+use MobileNowGroup\SubscribeMessage\Traits\InteractsMiniProgramUserOpenId;
 
 class User extends Authenticatable implements ReceiveWechatNotificationInterface
 {
