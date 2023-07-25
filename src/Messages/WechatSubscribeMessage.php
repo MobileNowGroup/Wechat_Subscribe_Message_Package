@@ -2,12 +2,14 @@
 
 namespace MobileNowGroup\SubscribeMessage\Messages;
 
-use EasyWeChat;
 use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
+use Overtrue\LaravelWeChat\EasyWeChat;
 
 class WechatSubscribeMessage
 {
-
+    /**
+     * @var \EasyWeChat\Kernel\HttpClient\AccessTokenAwareClient
+     */
     private $subscribeMessage;
 
     private $openId;
@@ -25,22 +27,17 @@ class WechatSubscribeMessage
      */
     public function __construct()
     {
-        $this->subscribeMessage = EasyWeChat::miniProgram()->subscribe_message;
+        $this->subscribeMessage = EasyWeChat::miniApp()->getClient();
     }
 
     /**
      * @return mixed
      * @throws WechatSubscribeMessageException
      */
-//    public function send()
-//    {
-//        $result = $this->templateMessage->send($this->setMessage());
-//        if ($result['errcode'] != 0) {
-//            throw new WechatTemplateMessageException($result['errmsg'], $result['errcode']);
-//        }
-//
-//        return $result;
-//    }
+    public function send()
+    {
+        return $this->subscribeMessage->postJson('cgi-bin/message/subscribe/send', $this->toArray());
+    }
 
     /**
      * @return array
