@@ -7,16 +7,8 @@
 如果你的 ``` overtrue/laravel_wechat ``` package 为 ^7.0 及以上版本，请执行下面命令
 
 ```shell
-composer require mobilenowgroup/subscribe-message:"^2.0"
+composer require mobilenowgroup/subscribe-message:"^7.0"
 ```
-
-如果你的 ``` overtrue/laravel_wechat ``` package 为 ^6.0 及以下版本，请执行下面命令
-
-
-```shell
-composer require mobilenowgroup/subscribe-message:"^1.3"
-```
-
 ## 使用
 
 ### 创建通知：
@@ -26,10 +18,11 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use MobileNowGroup\SubscribeMessage\Message\WechatSubScribeMessage;
+use MobileNowGroup\SubscribeMessage\Interfaces\WechatNotification;
+use MobileNowGroup\SubscribeMessage\Messages\WechatSubScribeMessage;
 use MobileNowGroup\SubscribeMessage\Channels\WechatSubscribeMessageChannel;
 
-class WechatSubScribeMessageNotification extends Notification
+class WechatSubScribeMessageNotification extends Notification implements WechatNotification
 {
     use Queueable;
 
@@ -53,6 +46,30 @@ class WechatSubScribeMessageNotification extends Notification
 }
 ```
 
+### User Model
+
+```php
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
+
+class User extends Authenticatable implements ReceiveWechatNotificationInterface
+{
+    use HasApiTokens, HasFactory, Notifiable;
+    
+    
+    public function routeNotificationForOpenid(): string;
+    {
+        return $this->open_id;
+    }
+}
+
+```
 ### 发送
 
 ```php

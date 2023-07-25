@@ -5,12 +5,16 @@
     "license": "MIT",
     "require": {
         "laravel/framework": "*",
-        "w7corp/easywechat": "1.* | 2.* | 3.* | 4.* | 5.*"
+        "overtrue/laravel-wechat": "^7.0"
     },
     "authors": [
         {
             "name": "Melo",
             "email": "747786659@qq.com"
+        },
+        {
+            "name": "Donny",
+            "email": "qq1507438135@163.com"
         }
     ],
     "extra": {
