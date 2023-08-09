@@ -2,7 +2,6 @@
 
 namespace MobileNowGroup\SubscribeMessage\Channels;
 
-use EasyWeChat\Kernel\HttpClient\Response;
 use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
 use MobileNowGroup\SubscribeMessage\Interfaces\WechatNotification;
 use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
