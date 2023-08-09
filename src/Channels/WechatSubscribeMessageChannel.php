@@ -26,7 +26,7 @@ class WechatSubscribeMessageChannel
 
         $result = $message->send();
 
-        event(new WechatSubscribeMessageSent($result));
+        event(new WechatSubscribeMessageSent($result->toArray()));
 
         if ($result['errcode'] != 0) {
             throw new WechatSubscribeMessageException($result['errmsg'], $result['errcode']);
