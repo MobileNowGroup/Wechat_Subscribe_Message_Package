@@ -2,6 +2,7 @@
 
 namespace MobileNowGroup\SubscribeMessage\Channels;
 
+use EasyWeChat\Kernel\HttpClient\Response;
 use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
 use MobileNowGroup\SubscribeMessage\Interfaces\WechatNotification;
 use MobileNowGroup\SubscribeMessage\Exceptions\WechatSubscribeMessageException;
@@ -26,7 +27,7 @@ class WechatSubscribeMessageChannel
 
         $result = $message->send();
 
-        event(new WechatSubscribeMessageSent($result));
+        event(new WechatSubscribeMessageSent($result->toArray()));
 
         if ($result['errcode'] != 0) {
             throw new WechatSubscribeMessageException($result['errmsg'], $result['errcode']);
