@@ -19,7 +19,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use MobileNowGroup\SubscribeMessage\Interfaces\WechatNotification;
-use MobileNowGroup\SubscribeMessage\Messages\WechatSubScribeMessage;
+use MobileNowGroup\SubscribeMessage\Messages\WechatSubscribeMessage;
 use MobileNowGroup\SubscribeMessage\Channels\WechatSubscribeMessageChannel;
 
 class WechatSubScribeMessageNotification extends Notification implements WechatNotification
