@@ -5,12 +5,20 @@
     "license": "MIT",
     "require": {
         "laravel/framework": "*",
-        "w7corp/easywechat": "1.* | 2.* | 3.* | 4.* | 5.*"
+        "w7corp/easywechat": "1.* | 2.* | 3.* | 4.* | 5.* | 6.*"
     },
     "authors": [
         {
-            "name": "Melo",
-            "email": "747786659@qq.com"
+            "name": "Fayne Guo",
+            "email": "fayne.guo@gmail.com"
+        },
+        {
+            "name": "Johan An",
+            "email": "johan.an@mobilenowgroup.com"
+        },
+        {
+            "name": "Donny Zhang",
+            "email": "donny.zhang@mobilenowgroup.com"
         }
     ],
     "extra": {
