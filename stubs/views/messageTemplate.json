@@ -1,0 +1,44 @@
+{
+  "thing1": {
+    "value": "{{ event }}"
+  },
+  "number2": {
+    "value": "{{ weight }}"
+  },
+  "letter3": {
+    "value": "{{ code1 }}"
+  },
+  "symbol4": {
+    "value": "{{ code2 }}"
+  },
+  "character_string5": {
+    "value": "{{ password }}"
+  },
+  "time6": {
+    "value": "{{ time }}"
+  },
+  "date7": {
+    "value": "{{ date }}"
+  },
+  "amount8": {
+    "value": "{{ price }}"
+  },
+  "phone_number9": {
+    "value": "{{ phone_number }}"
+  },
+  "car_number10": {
+    "value": "{{ car_number }}"
+  },
+  "name11": {
+    "value": "{{ user }}"
+  },
+  "phrase12": {
+    "value": "{{ status }}"
+  },
+  "enum13": {
+    "value": "{{ position }}"
+  },
+  "amount12": {
+    "value": "{{ people }}"
+  }
+}
