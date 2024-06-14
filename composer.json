@@ -28,5 +28,8 @@
         "psr-4": {
             "MobileNowGroup\\SubscribeMessage\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     }
 }
