@@ -7,6 +7,10 @@
 ## 安装
 
 ```shell
+composer config repositories.mobilenowgroup/subscribe-message git git@github.com:MobileNowGroup/Wechat_Subscribe_Message_Package.git
+```
+
+```shell
 composer require mobilenowgroup/subscribe-message:"^3.0"
 ```
 
