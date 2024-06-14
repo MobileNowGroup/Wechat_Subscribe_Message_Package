@@ -11,9 +11,8 @@ composer config repositories.mobilenowgroup/subscribe-message git git@github.com
 ```
 
 ```shell
-composer require mobilenowgroup/subscribe-message:"^3.0"
+composer require mobilenowgroup/subscribe-message:"^7.0"
 ```
-
 ## 使用
 
 ### 创建通知：
@@ -23,10 +22,11 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use MobileNowGroup\SubscribeMessage\Message\WechatSubScribeMessage;
+use MobileNowGroup\SubscribeMessage\Interfaces\WechatNotification;
+use MobileNowGroup\SubscribeMessage\Messages\WechatSubscribeMessage;
 use MobileNowGroup\SubscribeMessage\Channels\WechatSubscribeMessageChannel;
 
-class WechatSubScribeMessageNotification extends Notification
+class WechatSubScribeMessageNotification extends Notification implements WechatNotification
 {
     use Queueable;
 
@@ -50,6 +50,27 @@ class WechatSubScribeMessageNotification extends Notification
 }
 ```
 
+### User Model
+
+```php
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use MobileNowGroup\SubscribeMessage\Interfaces\ReceiveWechatNotificationInterface;
+use MobileNowGroup\SubscribeMessage\Traits\InteractsMiniProgramUserOpenId;
+
+class User extends Authenticatable implements ReceiveWechatNotificationInterface
+{
+    use HasApiTokens, HasFactory, Notifiable, InteractsMiniProgramUserOpenId;
+    
+    
+}
+
+```
 ### 发送
 
 ```php
