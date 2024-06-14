@@ -2,9 +2,9 @@
 
 使用 EasyWechat 的模板消息功能发送 Laravel 消息通知。
 
-## 安装
+`3.0以上版本将使用 __w7corp/easywechat__ 替换原来的 __overtrue/laravel_wechat__ 包`
 
-如果你的 ``` overtrue/laravel_wechat ``` package 为 ^7.0 及以上版本，请执行下面命令
+## 安装
 
 ```shell
 composer require mobilenowgroup/subscribe-message:"^7.0"
